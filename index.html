@@ -1,99 +1,123 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Loqate Demo</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <title>Loqate Demo</title>
 
 
 
-    <link rel="stylesheet" type="text/css" href="https://services.postcodeanywhere.co.uk/css/address-3.91.css" />
-    <script type="text/javascript" src="https://services.postcodeanywhere.co.uk/js/address-3.91.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://services.postcodeanywhere.co.uk/css/address-3.91.css" />
+  <script type="text/javascript" src="https://services.postcodeanywhere.co.uk/js/address-3.91.js"></script>
+
+
+
+</head>
+
+<body>
+  <h1>Loqate Demo</h1>
+
+
+  <div class="container">
+
+    <form>
+      <div class="form-group">
+        <label for="SearchAddress">Search Address</label>
+        <input type="search" autocomplete="none" placeholder="Start typing your address" class="form-control"
+          id="SearchAddress" aria-describedby="loqateHelp">
+        <small id="loqateHelp" class="form-text text-muted">Type your address here, and Loqate will look for
+          it...</small>
+      </div>
+      <div class="form-group">
+        <label for="Address1">Address1</label>
+        <input type="text" class="form-control" id="Address1">
+      </div>
+      <div class="form-group">
+        <label for="Address2">Address2</label>
+        <input type="text" class="form-control" id="Address2">
+      </div>
+      <div class="form-group">
+        <label for="Address3">Address3</label>
+        <input type="text" class="form-control" id="Address3">
+      </div>
+      <div class="form-group">
+        <label for="Town">Town</label>
+        <input type="text" class="form-control" id="Town">
+      </div>
+      <div class="form-group">
+        <label for="CountyState">CountyState</label>
+        <input type="text" class="form-control" id="CountyState">
+      </div>
+      <div class="form-group">
+        <label for="Country">Country</label>
+        <input type="text" class="form-control" id="Country">
+      </div>
+
+      <button type="button" class="btn btn-primary">Does Nothing</button>
+    </form>
+
+
+  </div>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+
 
     <script type="text/javascript">
 
+      // A $( document ).ready() block.
+      $(document).ready(function () {
         var options = { key: "BD62-XN92-FK24-GE22", countries: { codesList: "USA,CAN" }, setCountryByIP: false };
-
+  
         var fields = [
-            { element: "BillingAddressSearch", field: "", mode: pca.fieldMode.SEARCH },            
-            { element: "Address1", field: "Line1", mode: pca.fieldMode.POPULATE },
-            { element: "Address2", field: "Line2", mode: pca.fieldMode.POPULATE },
-            { element: "Address3", field: "Line3", mode: pca.fieldMode.POPULATE },
-            { element: "TownCity", field: "City", mode: pca.fieldMode.POPULATE },
-            { element: "CountyState", field: "AdminAreaName", mode: pca.fieldMode.POPULATE },
-            { element: "postcode", field: "PostalCode", mode: pca.fieldMode.POPULATE }
-            //{ element: "country", field: "CountryName", mode: pca.fieldMode.COUNTRY }
+          { element: "BillingAddressSearch", field: "", mode: pca.fieldMode.SEARCH },
+          { element: "Address1", field: "Line1", mode: pca.fieldMode.POPULATE },
+          { element: "Address2", field: "Line2", mode: pca.fieldMode.POPULATE },
+          { element: "Address3", field: "Line3", mode: pca.fieldMode.POPULATE },
+          { element: "TownCity", field: "City", mode: pca.fieldMode.POPULATE },
+          { element: "CountyState", field: "AdminAreaName", mode: pca.fieldMode.POPULATE },
+          { element: "postcode", field: "PostalCode", mode: pca.fieldMode.POPULATE }
+          //{ element: "country", field: "CountryName", mode: pca.fieldMode.COUNTRY }
         ];
-
+  
         var addressControl = new pca.Address(fields, options);
-
+  
         //pca.on("options", function (type, id, options) {
         //    if (type == "capture+") {
         //        options.suppressAutocomplete = false;
         //    }
         //});
-
+  
         addressControl.load();
-
-        
-
+  
+  
+      });
+  
+  
+  
+  
+  
     </script>
 
 
-  </head>
-  <body>
-    <h1>Loqate Demo</h1>
+</body>
 
-
-    <div class="container">
-      
-      <form>
-        <div class="form-group">
-          <label for="SearchAddress">Search Address</label>
-          <input type="search" autocomplete="none" placeholder="Start typing your address" class="form-control" id="SearchAddress" aria-describedby="loqateHelp">
-          <small id="loqateHelp" class="form-text text-muted">Type your address here, and Loqate will look for it...</small>
-        </div>
-        <div class="form-group">
-          <label for="Address1">Address1</label>
-          <input type="text" class="form-control" id="Address1">
-        </div>
-        <div class="form-group">
-          <label for="Address2">Address2</label>
-          <input type="text" class="form-control" id="Address2">
-        </div>
-        <div class="form-group">
-          <label for="Address3">Address3</label>
-          <input type="text" class="form-control" id="Address3">
-        </div>
-        <div class="form-group">
-          <label for="Town">Town</label>
-          <input type="text" class="form-control" id="Town">
-        </div>
-        <div class="form-group">
-          <label for="CountyState">CountyState</label>
-          <input type="text" class="form-control" id="CountyState">
-        </div>
-        <div class="form-group">
-          <label for="Country">Country</label>
-          <input type="text" class="form-control" id="Country">
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-
-
-    </div>
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
 </html>

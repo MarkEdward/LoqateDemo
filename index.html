@@ -10,14 +10,9 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <link rel="stylesheet" type="text/css" href="https://services.postcodeanywhere.co.uk/css/address-3.91.css" />
+
   <title>Loqate Demo</title>
-
-
-
-  <link rel="stylesheet" type="text/css" href="https://services.postcodeanywhere.co.uk/css/address-3.91.css" />
-  <script type="text/javascript" src="https://services.postcodeanywhere.co.uk/js/address-3.91.js"></script>
-
-
 
 </head>
 
@@ -79,13 +74,17 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
 
+    
+    <script type="text/javascript" src="https://services.postcodeanywhere.co.uk/js/address-3.91.js"></script>
+  
 
 
     <script type="text/javascript">
 
       // A $( document ).ready() block.
       $(document).ready(function () {
-        var options = { key: "BD62-XN92-FK24-GE22", countries: { codesList: "USA,CAN" }, setCountryByIP: false };
+        
+        var options = { key: "BD62-XN92-FK24-GE22"};
   
         var fields = [
           { element: "BillingAddressSearch", field: "", mode: pca.fieldMode.SEARCH },
@@ -98,7 +97,7 @@
           //{ element: "country", field: "CountryName", mode: pca.fieldMode.COUNTRY }
         ];
   
-        var addressControl = new pca.Address(fields, options);
+        var control = new pca.Address(fields, options);
   
         //pca.on("options", function (type, id, options) {
         //    if (type == "capture+") {
@@ -106,7 +105,7 @@
         //    }
         //});
   
-        addressControl.load();
+        //control.load();
   
   
       });

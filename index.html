@@ -17,15 +17,17 @@
 </head>
 
 <body>
-  
+
   <h1 class="ml-3 mt-3 mb-3">Loqate Address Validation Demo</h1>
 
 
   <div class="container">
 
     <div class="alert alert-secondary" role="alert">
-      This demo uses the <a href="https://www.loqate.com/en-gb/address-verification/address-capture/" target="_blank">Loqate address lookup service</a>. 
-      <br>For pricing info <a href="https://www.loqate.com/en-gb/pricing/" target="_blank">click here</a>. For Country Codes used by Loqate <a href="https://support.loqate.com/coverage-full/" target="_blank">Click here</a>
+      This demo uses the <a href="https://www.loqate.com/en-gb/address-verification/address-capture/"
+        target="_blank">Loqate address lookup service</a>.
+      <br>For pricing info <a href="https://www.loqate.com/en-gb/pricing/" target="_blank">click here</a>. For Country
+      Codes used by Loqate <a href="https://support.loqate.com/coverage-full/" target="_blank">Click here</a>
     </div>
 
     <form method="post" class="form" autocomplete="off">
@@ -88,6 +90,11 @@
         <span class="form-control" id="Country">
       </div>
 
+
+      <div class="alert alert-danger" role="alert" id="FullOutput">
+        
+      </div>
+
       <!-- <button type="button" class="btn btn-primary">Does Nothing</button> -->
     </form>
 
@@ -148,6 +155,9 @@
       control.listen("populate", function (address, variations) {
         $("#CountyState").val(address.AdminAreaName != "" ? address.AdminAreaName : address.ProvinceName != "" ? address.ProvinceName : address.District);
         $("#Country").text(address.CountryName);
+
+        $("#FullOutput").html("<b>Raw JSON returned:</b><br/>" + JSON.stringify(address, null, 2));
+
       });
 
       $("#CountryFilter").change(function () {

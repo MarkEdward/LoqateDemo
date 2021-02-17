@@ -17,15 +17,21 @@
 </head>
 
 <body>
-  <h1>Loqate Demo</h1>
+  
+  <h1 class="ml-3 mt-3 mb-3">Loqate Address Validation Demo</h1>
 
 
   <div class="container">
 
+    <div class="alert alert-secondary" role="alert">
+      This demo uses the <a href="https://www.loqate.com/en-gb/address-verification/address-capture/" target="_blank">Loqate address lookup service</a>. 
+      <br>For pricing info <a href="https://www.loqate.com/en-gb/pricing/" target="_blank">click here</a>. For Country Codes used by Loqate <a href="https://support.loqate.com/coverage-full/" target="_blank">Click here</a>
+    </div>
+
     <form method="post" class="form" autocomplete="off">
 
       <div class="form-group">
-        <label for="CountryFilter">Country Filter</label>
+        <label for="CountryFilter"><strong>Country Filter</strong></label>
         <div class="row">
           <select class="form-control col-4 ml-3 mr-3" id="CountryFilter">
             <option value="">All Countries</option>
@@ -50,6 +56,9 @@
         <small id="loqateHelp" class="form-text text-muted">Type your address here, and Loqate will look for
           it...</small>
       </div>
+
+      <hr class="">
+
       <div class="form-group">
         <label for="Address1">Address1</label>
         <input type="text" class="form-control" id="Address1" name="Address1">
@@ -67,15 +76,19 @@
         <input type="text" class="form-control" id="Town">
       </div>
       <div class="form-group">
-        <label for="CountyState">CountyState</label>
+        <label for="CountyState">County/State</label>
         <input type="text" class="form-control" id="CountyState">
+      </div>
+      <div class="form-group">
+        <label for="Postcode">Post Code</label>
+        <input type="text" class="form-control" id="Postcode">
       </div>
       <div class="form-group">
         <label for="Country">Country</label>
         <span class="form-control" id="Country">
       </div>
 
-      <button type="button" class="btn btn-primary">Does Nothing</button>
+      <!-- <button type="button" class="btn btn-primary">Does Nothing</button> -->
     </form>
 
 
@@ -117,7 +130,7 @@
         { element: "Address3", field: "Line3", mode: pca.fieldMode.POPULATE },
         { element: "Town", field: "City", mode: pca.fieldMode.POPULATE },
         { element: "CountyState", field: "AdminAreaName", mode: pca.fieldMode.POPULATE },
-        { element: "postcode", field: "PostalCode", mode: pca.fieldMode.POPULATE }
+        { element: "Postcode", field: "PostalCode", mode: pca.fieldMode.POPULATE }
         //{ element: "country", field: "CountryName", mode: pca.fieldMode.COUNTRY }
       ];
 
@@ -133,7 +146,7 @@
         setCurrentCountry()
       });
       control.listen("populate", function (address, variations) {
-        $("#CountyState").val(address.AdminAreaName != "" ? address.AdminAreaName : address.ProvinceName);
+        $("#CountyState").val(address.AdminAreaName != "" ? address.AdminAreaName : address.ProvinceName != "" ? address.ProvinceName : address.District);
         $("#Country").text(address.CountryName);
       });
 

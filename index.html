@@ -137,17 +137,10 @@
         { element: "Address3", field: "Line3", mode: pca.fieldMode.POPULATE },
         { element: "Town", field: "City", mode: pca.fieldMode.POPULATE },
         { element: "CountyState", field: "AdminAreaName", mode: pca.fieldMode.POPULATE },
-        { element: "Postcode", field: "PostalCode", mode: pca.fieldMode.POPULATE }
-        //{ element: "country", field: "CountryName", mode: pca.fieldMode.COUNTRY }
+        { element: "Postcode", field: "PostalCode", mode: pca.fieldMode.POPULATE }        
       ];
 
       control = new pca.Address(fields, options);
-
-      // pca.on("options", function (type, id, options) {
-      //    if (type == "capture+") {
-      //        options.suppressAutocomplete = false;
-      //    }
-      // });
 
       control.listen("load", function () {
         setCurrentCountry()
@@ -168,18 +161,11 @@
         setCurrentCountry();
       });
 
-      //control.load();
-
-
     });
-
 
     function setCurrentCountry() {
       control.setCountry($("#CountryFilterCode").val());
     }
-
-
-
 
   </script>
 

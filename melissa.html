@@ -2,178 +2,283 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-  <link rel="stylesheet" type="text/css" href="https://services.postcodeanywhere.co.uk/css/address-3.91.css" />
 
-  <title>Loqate Demo</title>
+
+    <title>Melissa Demo</title>
 
 </head>
 
 <body>
 
-  <h1 class="ml-3 mt-3 mb-3">Melissa Address Validation Demo</h1>
+    <h1 class="ml-3 mt-3 mb-3">Melissa Address Validation Demo</h1>
 
 
-  <div class="container">
+    <div class="container">
 
-    <div class="alert alert-secondary" role="alert">
-      <a href="index.html"><i>Click here for the Loqate address lookup demo</i></a><br><br>
-      This demo uses the Loqate <a href="https://www.loqate.com/en-gb/address-verification/address-capture/"
-        target="_blank">realtime address capture service</a>.
-      <br>For pricing info <a href="https://www.loqate.com/en-gb/pricing/" target="_blank">click here</a>. For Country
-      Codes used by Loqate <a href="https://support.loqate.com/coverage-full/" target="_blank">Click here</a>
+        <div class="alert alert-secondary" role="alert">
+            <a href="index.html"><i>Click here for the Loqate address lookup demo</i></a><br><br>
+            This demo uses the Melissa <a href="http://sd.melissadata.com/salesdemo/salesdemoglobal.html"
+                target="_blank">Express Entry Global Address Auto Completion</a> service.
+            <br>For pricing info <a href="https://www.melissa.com/pricing/purchase" target="_blank">click here</a>. For
+            Country
+            Codes used by Melissa (and coverage info) <a href="http://wiki.melissadata.com/index.php?title=Data_Coverage_by_Country" target="_blank">Click here</a>
+        </div>
+
+        <form method="post" class="form" autocomplete="off">
+
+            <div class="form-group">
+                <label for="CountryFilter"><strong>Country Filter</strong></label>
+                <div class="row">
+                    <select class="form-control col-4 ml-3 mr-3" id="CountryFilter">
+                        <option value="">All Countries</option>
+                        <option value="GB">United Kingdom</option>
+                        <option value="US">United States</option>
+                        <option value="CA">Canada</option>
+                        <option value="FR">France</option>
+                        <option value="IE">Ireland</option>
+                        <option value="ES">Spain</option>
+                        <option value="DE">Germany</option>
+                        <option value="BR">Brazil</option>
+                        <option value="MX">Mexico</option>
+                    </select>
+                    <input type="text" class="form-control col-1" id="CountryFilterCode" name="CountryFilterCode">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="SearchAddress">Search Address</label>
+                <input type="search" autocomplete="none" placeholder="Start typing your address" class="form-control"
+                    id="SearchAddress" aria-describedby="melissaHelp">
+                <small id="melissaHelp" class="form-text text-muted">Type your address here, and we will search the
+                    Melissa Global Express service for
+                    it...</small>
+            </div>
+
+            <hr class="">
+
+            <div class="form-group">
+                <label for="Address1">Address1</label>
+                <input type="text" class="form-control" id="Address1" name="Address1">
+            </div>
+            <div class="form-group">
+                <label for="Address2">Address2</label>
+                <input type="text" class="form-control" id="Address2" name="Address2">
+            </div>
+            <div class="form-group">
+                <label for="Address3">Address3</label>
+                <input type="text" class="form-control" id="Address3">
+            </div>
+            <div class="form-group">
+                <label for="Town">Town</label>
+                <input type="text" class="form-control" id="Town">
+            </div>
+            <div class="form-group">
+                <label for="CountyState">County/State</label>
+                <input type="text" class="form-control" id="CountyState">
+            </div>
+            <div class="form-group">
+                <label for="Postcode">Post Code</label>
+                <input type="text" class="form-control" id="Postcode">
+            </div>
+            <div class="form-group">
+                <label for="Country">Country</label>
+                <span class="form-control" id="Country">
+            </div>
+
+
+            <div class="alert alert-danger" role="alert" id="FullOutput">
+
+            </div>
+
+            <!-- <button type="button" class="btn btn-primary">Does Nothing</button> -->
+        </form>
+
+
     </div>
 
-    <form method="post" class="form" autocomplete="off">
 
-      <div class="form-group">
-        <label for="CountryFilter"><strong>Country Filter</strong></label>
-        <div class="row">
-          <select class="form-control col-4 ml-3 mr-3" id="CountryFilter">
-            <option value="">All Countries</option>
-            <option value="GB">United Kingdom</option>
-            <option value="US">United States</option>
-            <option value="CA">Canada</option>
-            <option value="FR">France</option>
-            <option value="IE">Ireland</option>
-            <option value="ES">Spain</option>
-            <option value="DE">Germany</option>
-            <option value="BR">Brazil</option>
-            <option value="MX">Mexico</option>
-          </select>
-          <input type="text" class="form-control col-1" id="CountryFilterCode" name="CountryFilterCode">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="SearchAddress">Search Address</label>
-        <input type="search" autocomplete="none" placeholder="Start typing your address" class="form-control"
-          id="SearchAddress" aria-describedby="loqateHelp">
-        <small id="loqateHelp" class="form-text text-muted">Type your address here, and Loqate will look for
-          it...</small>
-      </div>
-
-      <hr class="">
-
-      <div class="form-group">
-        <label for="Address1">Address1</label>
-        <input type="text" class="form-control" id="Address1" name="Address1">
-      </div>
-      <div class="form-group">
-        <label for="Address2">Address2</label>
-        <input type="text" class="form-control" id="Address2" name="Address2">
-      </div>
-      <div class="form-group">
-        <label for="Address3">Address3</label>
-        <input type="text" class="form-control" id="Address3">
-      </div>
-      <div class="form-group">
-        <label for="Town">Town</label>
-        <input type="text" class="form-control" id="Town">
-      </div>
-      <div class="form-group">
-        <label for="CountyState">County/State</label>
-        <input type="text" class="form-control" id="CountyState">
-      </div>
-      <div class="form-group">
-        <label for="Postcode">Post Code</label>
-        <input type="text" class="form-control" id="Postcode">
-      </div>
-      <div class="form-group">
-        <label for="Country">Country</label>
-        <span class="form-control" id="Country">
-      </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 
 
-      <div class="alert alert-danger" role="alert" id="FullOutput">
-
-      </div>
-
-      <!-- <button type="button" class="btn btn-primary">Does Nothing</button> -->
-    </form>
-
-
-  </div>
-
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
-
-
-  <script type="text/javascript" src="https://services.postcodeanywhere.co.uk/js/address-3.91.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.js"></script>
 
 
 
-  <script type="text/javascript">
+    <script type="text/javascript">
 
-    var control;
+        var control;
+        var token;
 
-    // A $( document ).ready() block.
-    $(document).ready(function () {
+        // A $( document ).ready() block.
+        $(document).ready(function () {
 
-      $("#CountryFilterCode").val($("#CountryFilter").val());
+            $("#CountryFilterCode").val($("#CountryFilter").val());
+            $("#CountryFilterCode").val("GB");
 
-      var options = { key: "BD62-XN92-FK24-GE22" };
 
-      var fields = [
-        { element: "SearchAddress", field: "" },
-        { element: "Address1", field: "Line1", mode: pca.fieldMode.POPULATE },
-        { element: "Address2", field: "Line2", mode: pca.fieldMode.POPULATE },
-        { element: "Address3", field: "Line3", mode: pca.fieldMode.POPULATE },
-        { element: "Town", field: "City", mode: pca.fieldMode.POPULATE },
-        { element: "CountyState", field: "AdminAreaName", mode: pca.fieldMode.POPULATE },
-        { element: "Postcode", field: "PostalCode", mode: pca.fieldMode.POPULATE }
-      ];
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "http://sd.melissadata.com/salesdemo/licensekey.php",
+                    data: { function: "gettoken" },
+                    dataType: 'json',
+                    success: function (data) {
+                        token = data[0].token;
+                        //alert(token);
+                    }
+                });
 
-      control = new pca.Address(fields, options);
 
-      control.listen("load", function () {
-        setCurrentCountry()
-      });
+            $('#SearchAddress').autoComplete({
+                resolver: 'custom',
+                resolverSettings: {
+                    requestThrottling: 1000
+                },
+                formatResult:
+                    function (item) {
+                        return { id: item.Address.MAK, text: item.Address.Address }
+                    }
+                ,               
+                events: {
+                    search: function (qry, callback) {
+                        // let's do a custom ajax call
+                        $.getJSON(
+                            "https://expressentry.melissadata.net/jsonp/GlobalExpressFreeForm?callback=?",
+                            {
+                                format: "jsonp",
+                                id: token, //"PnWb1EjiNBCampQc_Af4ew**nSAcwXpxhQ0PC2lXxuDAZ-**",
+                                FF: qry,
+                                country: $('#CountryFilterCode').val(),
+                                maxrecords: "10"
+                            }
+                        ).done(function (res) {
 
-      control.listen("error", function (message) {
-        $("#FullOutput").html("<b>Error:</b><br/>" + message);
-      });
+                            // if (res.Results.length > 0)
+                            //     alert(JSON.stringify(res.Results));
 
-      control.listen("populate", function (address, variations) {
-        $("#CountyState").val(address.AdminAreaName != "" ? address.AdminAreaName : address.ProvinceName != "" ? address.ProvinceName : address.District);
-        $("#Country").text(address.CountryName);
+                            callback(res.Results);
+                        });
+                    }
+                }
+            });
 
-        $("#FullOutput").html("<b>Raw JSON returned:</b><br/>" + JSON.stringify(address, null, 2));
+            $('#SearchAddress').on('autocomplete.select', function (evt, item) {
+                $("#Address1").val(item.Address.Address1);
+                $("#Address2").val(item.Address.Address2);
+                $("#Address3").val(item.Address.Address3);
+                $("#Town").val(item.Address.Locality);
+                $("#CountyState").val(item.Address.AdministrativeArea);
+                $("#Postcode").val(item.Address.PostalCode);
+                $("#Country").text(item.Address.CountryName); 
 
-      });
+                $("#FullOutput").html("<b>Raw JSON returned:</b><br/>" + JSON.stringify(item.Address, null, 2));
 
-      $("#CountryFilter").change(function () {
-        $("#CountryFilterCode").val($("#CountryFilter").val());
-        setCurrentCountry();
-      });
-      $("#CountryFilterCode").blur(function () {
-        setCurrentCountry();
-      });
+                $('#SearchAddress').autoComplete('clear');
+            });
 
-    });
 
-    function setCurrentCountry() {
-      control.setCountry($("#CountryFilterCode").val());
-    }
 
-  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // // Built by LucyBot. www.lucybot.com
+            // var url = "https://address.melissadata.net/v3/WEB/GlobalAddress/doGlobalAddress";
+            // $.ajax({
+            //     url: url,
+            //     method: 'GET',
+            // }).done(function (result) {
+            //     console.log(result);
+            // }).fail(function (err) {
+            //     throw err;
+            // });
+
+
+            // var options = { key: "BD62-XN92-FK24-GE22" };
+
+            // var fields = [
+            //     { element: "SearchAddress", field: "" },
+            //     { element: "Address1", field: "Line1", mode: pca.fieldMode.POPULATE },
+            //     { element: "Address2", field: "Line2", mode: pca.fieldMode.POPULATE },
+            //     { element: "Address3", field: "Line3", mode: pca.fieldMode.POPULATE },
+            //     { element: "Town", field: "City", mode: pca.fieldMode.POPULATE },
+            //     { element: "CountyState", field: "AdminAreaName", mode: pca.fieldMode.POPULATE },
+            //     { element: "Postcode", field: "PostalCode", mode: pca.fieldMode.POPULATE }
+            // ];
+
+            // control = new pca.Address(fields, options);
+
+            // control.listen("load", function () {
+            //     setCurrentCountry()
+            // });
+
+            // control.listen("error", function (message) {
+            //     $("#FullOutput").html("<b>Error:</b><br/>" + message);
+            // });
+
+            // control.listen("populate", function (address, variations) {
+            //     $("#CountyState").val(address.AdminAreaName != "" ? address.AdminAreaName : address.ProvinceName != "" ? address.ProvinceName : address.District);
+            //     $("#Country").text(address.CountryName);
+
+            //     $("#FullOutput").html("<b>Raw JSON returned:</b><br/>" + JSON.stringify(address, null, 2));
+
+            // });
+
+            $("#CountryFilter").change(function () {
+                $("#CountryFilterCode").val($("#CountryFilter").val());
+                setCurrentCountry();
+            });
+            $("#CountryFilterCode").blur(function () {
+                setCurrentCountry();
+            });
+
+        });
+
+        function setCurrentCountry() {
+            //control.setCountry($("#CountryFilterCode").val());
+        }
+
+    </script>
 
 
 </body>

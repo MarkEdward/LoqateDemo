@@ -141,8 +141,7 @@
                     data: { function: "gettoken" },
                     dataType: 'json',
                     success: function (data) {
-                        token = data[0].token;
-                        //alert(token);
+                        token = data[0].token;                        
                     }
                 });
 
@@ -164,16 +163,12 @@
                             "https://expressentry.melissadata.net/jsonp/GlobalExpressFreeForm?callback=?",
                             {
                                 format: "jsonp",
-                                id: token, //"PnWb1EjiNBCampQc_Af4ew**nSAcwXpxhQ0PC2lXxuDAZ-**",
+                                id: token,
                                 FF: qry,
                                 country: $('#CountryFilterCode').val(),
                                 maxrecords: "10"
                             }
                         ).done(function (res) {
-
-                            // if (res.Results.length > 0)
-                            //     alert(JSON.stringify(res.Results));
-
                             callback(res.Results);
                         });
                     }
@@ -195,88 +190,13 @@
             });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            // // Built by LucyBot. www.lucybot.com
-            // var url = "https://address.melissadata.net/v3/WEB/GlobalAddress/doGlobalAddress";
-            // $.ajax({
-            //     url: url,
-            //     method: 'GET',
-            // }).done(function (result) {
-            //     console.log(result);
-            // }).fail(function (err) {
-            //     throw err;
-            // });
-
-
-            // var options = { key: "BD62-XN92-FK24-GE22" };
-
-            // var fields = [
-            //     { element: "SearchAddress", field: "" },
-            //     { element: "Address1", field: "Line1", mode: pca.fieldMode.POPULATE },
-            //     { element: "Address2", field: "Line2", mode: pca.fieldMode.POPULATE },
-            //     { element: "Address3", field: "Line3", mode: pca.fieldMode.POPULATE },
-            //     { element: "Town", field: "City", mode: pca.fieldMode.POPULATE },
-            //     { element: "CountyState", field: "AdminAreaName", mode: pca.fieldMode.POPULATE },
-            //     { element: "Postcode", field: "PostalCode", mode: pca.fieldMode.POPULATE }
-            // ];
-
-            // control = new pca.Address(fields, options);
-
-            // control.listen("load", function () {
-            //     setCurrentCountry()
-            // });
-
-            // control.listen("error", function (message) {
-            //     $("#FullOutput").html("<b>Error:</b><br/>" + message);
-            // });
-
-            // control.listen("populate", function (address, variations) {
-            //     $("#CountyState").val(address.AdminAreaName != "" ? address.AdminAreaName : address.ProvinceName != "" ? address.ProvinceName : address.District);
-            //     $("#Country").text(address.CountryName);
-
-            //     $("#FullOutput").html("<b>Raw JSON returned:</b><br/>" + JSON.stringify(address, null, 2));
-
-            // });
-
             $("#CountryFilter").change(function () {
-                $("#CountryFilterCode").val($("#CountryFilter").val());
-                setCurrentCountry();
-            });
-            $("#CountryFilterCode").blur(function () {
-                setCurrentCountry();
+                $("#CountryFilterCode").val($("#CountryFilter").val());               
             });
 
         });
 
-        function setCurrentCountry() {
-            //control.setCountry($("#CountryFilterCode").val());
-        }
+     
 
     </script>
 

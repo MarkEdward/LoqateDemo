@@ -163,12 +163,17 @@
                             "https://expressentry.melissadata.net/jsonp/GlobalExpressFreeForm?callback=?",
                             {
                                 format: "jsonp",
-                                id: token,
+                                id: token, //"T:PnWb1EjiNBCampQc_Af4ew**nSAcwXpxhQ0PC2lXxuDAZ-**", 
                                 FF: qry,
                                 country: $('#CountryFilterCode').val(),
                                 maxrecords: "10"
                             }
                         ).done(function (res) {
+
+                            if(res.ErrorString != "" && (res.Results == null || res.Results.length == 0)) {
+                                $("#FullOutput").html("<b>Error returned:</b><br/>" + res.ResultCode + " - " + res.ErrorString);
+                            }
+
                             callback(res.Results);
                         });
                     }
